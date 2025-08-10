@@ -25,18 +25,28 @@ The app expects a single environment variable:
 
 ---
 
+## How to Conduct Tests
+- Use pytest to conduct tests
+- Continuous Integration (CI) is enabled on GitHub
+
+---
+
 ## Rate Limits & Notes
 
-- RapidAPI plans have per-minute/hour quotas. If you see 429 errors, slow requests or reduce list sizes (e.g., scan top-25 ADP instead of top-100).
+- RapidAPI plans have per-minute/hour quotas. If you see 429 errors, slow requests or reduce list sizes (e.g., scan top-50 ADP instead of top-100).
 
-- Odds may not be posted yet for future dates; the Schedule page adds a friendly note for those days.
+- Sportsbooks may not post odds immediately for future dates; the Schedule page shows a “not yet released” note for those calendar days.
 
 - Team abbreviations differ across feeds; the app normalizes common ones.
 
-## How to Active Locally
+---
+
+## How to Activate Locally
 
 - conda create -n Fantasy-Football python=3.10
 - conda activate Fantasy-Football
 - python -m pip install -r requirements.txt
 - flask run
+- open using local: http://127.0.0.1:5000
+- using Render link: 
 
