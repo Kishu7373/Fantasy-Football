@@ -48,5 +48,5 @@ The app expects a single environment variable:
 - python -m pip install -r requirements.txt
 - flask run
 - open using local: http://127.0.0.1:5000
-- using Render link: 
+- using Render link: https://fantasy-football-rttc.onrender.com
 

@@ -18,6 +18,7 @@ def create_app():
     app.register_blueprint(news_bp)         # "/news"
     app.register_blueprint(injuries_bp)     # "/injuries"
 
+    # No cache responses in tests
     @app.after_request
     def add_no_cache_headers(resp):
         resp.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
@@ -26,3 +27,5 @@ def create_app():
         return resp
 
     return app
+
+app = create_app()
