@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+  <h1>Fantasy Football Tools</h1>
+  <p style="max-width: 800px">
+    Welcome! This site bundles a few quick, practical tools powered by the Tank01 NFL API:
+  </p>
+
+  <ul style="max-width: 800px; line-height: 1.6">
+    <li><strong>Projections</strong> — run a simple mock draft off current ADP, then see
+        weekly projected points for your roster. (This is the “main” working page.)</li>
+    <li><strong>Injuries</strong> — fast snapshot of injured players (Top-50 ADP scan) and an
+        optional player card lookup.</li>
+    <li><strong>Schedule + Odds</strong> — weekly schedule with betting lines; if lines aren’t posted yet,
+        we’ll tell you.</li>
+    <li><strong>News</strong> — league-wide headlines first, with an optional player filter.</li>
+  </ul>
+
+  <h2>Quick Links</h2>
+  <p>
+    <a class="btn" href="{{ url_for('projections.projections') }}">Go to Projections</a>
+    <a class="btn" href="{{ url_for('injuries.injuries') }}">Injuries</a>
+    <a class="btn" href="{{ url_for('schedule.schedule') }}">Schedule + Odds</a>
+    <a class="btn" href="{{ url_for('news.news') }}">News</a>
+  </p>
+
+  <style>
+    .btn {
+      display: inline-block;
+      margin: 6px 8px 0 0;
+      padding: 10px 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .btn:hover { background: #f3f3f3; }
+  </style>
+{% endblock %}

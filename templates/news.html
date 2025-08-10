@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>NFL News</h2>
+
+  <form method="get" action="{{ url_for('news.news') }}" style="margin: 10px 0;">
+    <label>Search by player:
+      <input type="text" name="q" value="{{ query|e }}" placeholder="e.g., Justin Jefferson">
+    </label>
+    <button type="submit">Search</button>
+    {% if query %}
+      <a href="{{ url_for('news.news') }}" style="margin-left:8px">Clear</a>
+    {% endif %}
+  </form>
+
+  {% if query %}
+    <p>Showing {{ showing }} headline(s) mentioning "<b>{{ query|e }}</b>" out of {{ total }} league items.</p>
+  {% else %}
+    <p>Showing {{ showing }} league-wide headline(s).</p>
+  {% endif %}
+
+  {% if not items %}
+    <p>No items found.</p>
+  {% else %}
+    <table border="1" cellpadding="6" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Source</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in items %}
+          <tr>
+            <td>{{ r.title }}</td>
+            <td>{{ r.source }}</td>
+            <td><a href="{{ r.link }}" target="_blank" rel="noopener noreferrer">Open</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+{% endblock %}

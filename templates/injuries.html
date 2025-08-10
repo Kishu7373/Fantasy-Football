@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Injuries{% endblock %}
+
+{% block content %}
+<h2>Injury Report — Season {{ season }}</h2>
+<p class="subtle">
+  Scanned top {{ top_scan }} by ADP. Showing up to {{ max_results }} with an injury description.
+  Found {{ found }}. Finished in {{ elapsed }}s.
+</p>
+
+<form method="get" style="margin: 12px 0;">
+  <input name="player" value="{{ query or '' }}" placeholder="Look up a player"
+         style="padding:6px 8px; width: 260px;">
+  <button style="padding:6px 10px;">Search</button>
+  {% if query %}
+    <a href="{{ url_for('injuries.injuries') }}" style="margin-left:8px;">Clear</a>
+  {% endif %}
+</form>
+
+{% if card_html %}
+  <div style="margin: 14px 0;">{{ card_html|safe }}</div>
+{% endif %}
+
+<div style="margin-top: 14px;">
+  {{ table_html|safe }}
+</div>
+{% endblock %}

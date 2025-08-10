@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>NFL Week {{ week }} Schedule + Odds — Season {{ season }}</h2>
+
+  <form method="get" action="{{ url_for('schedule.schedule') }}" style="margin:10px 0">
+    <label>Week:
+      <input type="number" name="week" min="1" max="18" value="{{ week }}">
+    </label>
+    <button type="submit">Go</button>
+  </form>
+
+  <div style="margin:10px 0">
+    {{ table_html|safe }}
+  </div>
+
+  {% if missing_note %}
+    <p style="margin-top:10px; font-style:italic;">{{ missing_note }}</p>
+  {% endif %}
+{% endblock %}

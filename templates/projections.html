@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Projections</h2>
+
+<form id="proj-controls" method="get" action="{{ url_for('projections.projections') }}" style="margin-bottom:1rem;">
+  <label>Teams:
+    <input type="number" name="teams" min="2" max="16" value="{{ controls.teams }}">
+  </label>
+  <label>Slot:
+    <input type="number" name="slot" min="1" max="{{ controls.teams }}" value="{{ controls.slot }}">
+  </label>
+  <label>Week:
+    <input type="number" name="week" min="1" max="18" value="{{ controls.week }}">
+  </label>
+  <label>Scoring:
+    <select name="scoring">
+      {% for opt in ["standard","PPR","halfPPR","bestBall","IDP","superFlex"] %}
+        <option value="{{ opt }}" {% if controls.scoring == opt %}selected{% endif %}>{{ opt }}</option>
+      {% endfor %}
+    </select>
+  </label>
+  <button type="submit">Update</button>
+</form>
+
+<script>
+  // Auto-submit whenever a control changes
+  (function () {
+    var form = document.getElementById('proj-controls');
+    form.addEventListener('change', function () { form.submit(); });
+  })();
+</script>
+
+<h3>Draft Log</h3>
+{{ draft_log_html|safe }}
+
+<h3>Your Roster (Team {{ controls.slot }})</h3>
+{{ roster_html|safe }}
+
+<h3>Week {{ controls.week }} — Projections</h3>
+{{ projections_html|safe }}
+
+<h3>Starters</h3>
+{{ starters_html|safe }}
+
+<h3>Totals</h3>
+{{ totals_html|safe }}
+
+{% endblock %}
+
