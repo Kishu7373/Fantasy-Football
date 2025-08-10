@@ -48,4 +48,6 @@ The app expects a single environment variable:
 - python -m pip install -r requirements.txt
 - flask run
 - open using local: http://127.0.0.1:5000
+    - Data for the Projections and Injuries tabs will take time to load.
 - using Render link: https://fantasy-football-az2j.onrender.com
+    - Render Link may be slow to load or will not load due to our utilization of the free memory service.
